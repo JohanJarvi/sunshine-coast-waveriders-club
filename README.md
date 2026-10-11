@@ -26,6 +26,11 @@ npm run lint
 | `components/EventBuilder.tsx` | The `/event` UI (client component, saved to localStorage).   |
 | `app/page.tsx`                | Landing page.                                                |
 
+## Announcing a session
+
+Set `nextEvent` in `lib/site.ts` (date, time, beach) and push. The landing page shows it
+in the hero. Set it back to `null` afterwards and the site says "to be announced".
+
 ## How the draw works
 
 - Each round, every surfer gets one heat. Heats are as even as possible

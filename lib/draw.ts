@@ -42,24 +42,14 @@ export type EventState = {
 };
 
 export const defaultSettings = (): EventSettings => ({
-  title: "First Saturday Session",
-  date: nextFirstSaturday(),
+  title: "Waveriders Session",
+  date: toIsoDate(new Date()),
   startTime: "06:30",
   heatMinutes: 25,
   changeoverMinutes: 5,
   maxPerHeat: 4,
   rounds: 2,
 });
-
-export function nextFirstSaturday(from = new Date()): string {
-  for (let monthOffset = 0; monthOffset < 3; monthOffset++) {
-    const d = new Date(from.getFullYear(), from.getMonth() + monthOffset, 1);
-    while (d.getDay() !== 6) d.setDate(d.getDate() + 1);
-    const today = new Date(from.getFullYear(), from.getMonth(), from.getDate());
-    if (d >= today) return toIsoDate(d);
-  }
-  return toIsoDate(from);
-}
 
 function toIsoDate(d: Date): string {
   const p = (n: number) => String(n).padStart(2, "0");

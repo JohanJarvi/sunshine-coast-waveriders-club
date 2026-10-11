@@ -11,8 +11,8 @@ const crafts = [
   { name: "Bodyboard", note: "Belly down, no shame" },
   { name: "Foamie", note: "Soft top, big grin" },
   { name: "Mat or alaia", note: "Old-school slide" },
-  { name: "An old door", note: "Yes, really" },
-  { name: "Something else", note: "If it floats, bring it" },
+  { name: "Midlength", note: "A bit of everything" },
+  { name: "Anything else", note: "If it rides a wave, it counts" },
 ];
 
 const steps = [
@@ -55,7 +55,7 @@ export default function Home() {
         <SiteHeader light />
         <div className="relative mx-auto max-w-5xl px-4 pb-28 pt-10 sm:px-6 sm:pb-36 sm:pt-16">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-foam/80">
-            {site.when}
+            {site.eyebrow}
           </p>
           <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl">
             {site.heroName.before}
@@ -64,9 +64,10 @@ export default function Home() {
             {site.heroName.after}
           </h1>
           <p className="mt-6 max-w-xl text-lg text-foam sm:text-xl">
-            {site.tagline} Bring a longboard, a shortboard, an old door or just your body.
-            As long as you&apos;re riding waves, you&apos;re one of us.
+            {site.tagline} Longboard, shortboard, bodyboard or just your body. Anything
+            goes: as long as you&apos;re riding waves, you&apos;re one of us.
           </p>
+          <NextEvent />
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#how"
@@ -208,8 +209,38 @@ export default function Home() {
       </main>
 
       <footer className="bg-ocean-deep py-8 text-center text-sm text-foam/70">
-        {site.name} · Location and conditions shared ahead of each session
+        {site.name} · Time and location announced here before each session
       </footer>
     </>
+  );
+}
+
+function NextEvent() {
+  const e = site.nextEvent;
+  return (
+    <div className="mt-8 max-w-xl rounded-2xl bg-ocean-deep/70 p-5 ring-1 ring-white/10 backdrop-blur-sm">
+      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sun">
+        Next session
+      </p>
+      {e ? (
+        <dl className="mt-3 grid grid-cols-3 gap-3 text-sm">
+          {[
+            ["When", e.date],
+            ["Time", e.time],
+            ["Where", e.location],
+          ].map(([k, v]) => (
+            <div key={k}>
+              <dt className="text-foam/60">{k}</dt>
+              <dd className="mt-0.5 font-semibold text-sand">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : (
+        <p className="mt-2 text-foam">
+          To be announced. We&apos;ll post the date, time and beach here before each
+          event, so check back soon.
+        </p>
+      )}
+    </div>
   );
 }
