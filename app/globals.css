@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --sand: #f6efe2;
+  --sand-deep: #ead9bd;
+  --ink: #0b2a33;
+  --ocean: #0e5e6f;
+  --ocean-deep: #08424f;
+  --foam: #e6f4f1;
+  --sun: #f59e0b;
+  --coral: #ef6f4c;
+}
+
+@theme inline {
+  --color-sand: var(--sand);
+  --color-sand-deep: var(--sand-deep);
+  --color-ink: var(--ink);
+  --color-ocean: var(--ocean);
+  --color-ocean-deep: var(--ocean-deep);
+  --color-foam: var(--foam);
+  --color-sun: var(--sun);
+  --color-coral: var(--coral);
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque Variable", "Geist Variable", system-ui, sans-serif;
+}
+
+body {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  .print-break {
+    break-inside: avoid;
+  }
+}
